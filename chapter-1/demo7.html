@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [v-clock]{
+        display:none;}
+    </style>
+</head>
+<body>
+<div id="vue" v-clock>
+    <div>{{info.name}}</div>
+    <div>{{info.address.street}}</div>
+    <a v-bind:href="info.url">点我</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+   var vm = new Vue({
+   el:'#vue',
+
+   data():{
+   return{
+      info:{
+      name:null,
+      address:{
+      street:null,
+      city:null,
+      country:null},
+      url:null
+     }
+    }
+   }
+   mounted(){
+      axios.get(../data.json).then(response=>(console.log(response.data)))};
+   });
+</script>
+
+</body>
+</html>
